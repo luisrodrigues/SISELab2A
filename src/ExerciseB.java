@@ -1,5 +1,6 @@
-public class ExerciseA {
-    public static final int NUM_ITER = 5;
+public class ExerciseB {
+    public static final int NUM_ITER = 1000;
+    public static Counter counter = new Counter(0);
 
     static class MyThread extends Thread {
         private String name;
@@ -14,7 +15,8 @@ public class ExerciseA {
 
         public void run () {
             for (int i = 0; i < NUM_ITER; i++) {
-                writeHello();
+                //writeHello();
+                counter.increment();
             }
         }
     }
@@ -27,9 +29,9 @@ public class ExerciseA {
         b.start();
 
         a.join();
-        System.out.println("I'm done");
         b.join();
 
+        System.out.println(counter.value());
 
     }
 }
